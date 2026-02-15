@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QScrollArea>
 #include <QUrl>
 
 
@@ -126,8 +127,14 @@ void SitesDialog::buildUIfromJSON(void) {
         qDebug() << "Site:" << nom << "ID:" << id;
         QWidget *site_tab = new QWidget();
         site_tab->setProperty("SiteID",id);
-        QVBoxLayout *layout = new QVBoxLayout(site_tab);
-        //    layout->addWidget(new QLabel(nom));
+        QVBoxLayout *mainLayout = new QVBoxLayout(site_tab);
+        // Scroll area
+        QScrollArea *scroll = new QScrollArea;
+        scroll->setWidgetResizable(true);
+
+        // Content inside scroll area
+        QWidget *contentWidget = new QWidget();
+        QVBoxLayout *layout = new QVBoxLayout(contentWidget);
         std::list<QGroupBox*> groupbox_list;
         QJsonObject functions = site["functions"].toObject();
         for (auto [key,value] : functions.toVariantMap().asKeyValueRange()) {
@@ -152,6 +159,9 @@ void SitesDialog::buildUIfromJSON(void) {
         for (auto const &gb : groupbox_list) {
             layout->addWidget(gb);
         }
+        layout->addStretch();
+        scroll->setWidget(contentWidget);
+        mainLayout->addWidget(scroll);
         ui->SitesTab->addTab(site_tab, nom);
 
     }

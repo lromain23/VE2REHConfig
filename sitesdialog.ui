@@ -19,11 +19,11 @@
      <x>30</x>
      <y>10</y>
      <width>561</width>
-     <height>281</height>
+     <height>391</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>4</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_Site49">
     <property name="SiteID" stdset="0">
@@ -1069,8 +1069,8 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>310</y>
+     <x>110</x>
+     <y>410</y>
      <width>58</width>
      <height>18</height>
     </rect>
@@ -1082,8 +1082,8 @@
   <widget class="QLineEdit" name="dtmfSeq">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>310</y>
+     <x>160</x>
+     <y>410</y>
      <width>151</width>
      <height>26</height>
     </rect>
@@ -1092,8 +1092,8 @@
   <widget class="QPushButton" name="sendDTMF">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>310</y>
+     <x>310</x>
+     <y>410</y>
      <width>86</width>
      <height>26</height>
     </rect>
@@ -1105,8 +1105,8 @@
   <widget class="QCheckBox" name="enable">
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>310</y>
+     <x>430</x>
+     <y>410</y>
      <width>101</width>
      <height>21</height>
     </rect>

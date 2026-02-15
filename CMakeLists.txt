@@ -28,8 +28,8 @@ FetchContent_Declare(
 set(BUILD_WITH_QT6 ON CACHE BOOL "Build qtkeychain with Qt6" FORCE)
 set(BUILD_TEST_APPLICATION OFF CACHE BOOL "Disable QtKeychain test app" FORCE)
 set(BUILD_TESTING OFF CACHE BOOL "Disable QtKeychain tests" FORCE)
-#FetchContent_MakeAvailable(qtkeychain)
-add_subdirectory(third_party/qtkeychain)
+FetchContent_MakeAvailable(qtkeychain)
+#add_subdirectory(third_party/qtkeychain)
 
 target_link_libraries(VE2REHConfig
     PRIVATE
