@@ -1,0 +1,1125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SitesDialog</class>
+ <widget class="QDialog" name="SitesDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>666</width>
+    <height>501</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Sites</string>
+  </property>
+  <widget class="QTabWidget" name="SitesTab">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>561</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab_Site49">
+    <property name="SiteID" stdset="0">
+     <string>49</string>
+    </property>
+    <attribute name="title">
+     <string>Campbell's Bay</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBoxRepeteur">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>40</y>
+       <width>111</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Répéteur</string>
+     </property>
+     <widget class="QPushButton" name="enableButton">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*49#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="disableButton">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*49*</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBoxLien">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>40</y>
+       <width>101</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Lien</string>
+     </property>
+     <widget class="QPushButton" name="LienOn">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*39*</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="LienOff">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*39#</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBoxAdmin">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>40</y>
+       <width>120</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Admin</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%012#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="disableButton_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%0#</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>150</y>
+       <width>120</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Fonctions</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_5">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Redémarrer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%1#</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_Ripon">
+    <property name="SiteID" stdset="0">
+     <string>07</string>
+    </property>
+    <attribute name="title">
+     <string>Ripon</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBoxAdmin_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>120</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Admin</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_6">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%012#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="disableButton_5">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%0#</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBoxRepeteur_3">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>30</y>
+       <width>121</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Répéteur</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_7">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*58#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="disableButton_6">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*58*</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBoxLien_3">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>30</y>
+       <width>121</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Lien</string>
+     </property>
+     <widget class="QPushButton" name="LienOn_4">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%2017#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="LienOff_4">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%2016#</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>120</y>
+       <width>120</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Radio 2</string>
+     </property>
+     <widget class="QPushButton" name="LienOn_6">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%2017#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="LienOff_6">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%2015#</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>120</y>
+       <width>120</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Radio 3</string>
+     </property>
+     <widget class="QPushButton" name="LienOn_8">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%2017#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="LienOff_8">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%2013#</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_9">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>120</y>
+       <width>120</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Fonctions</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_20">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Redémarrer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%1#</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_Mtl">
+    <property name="SiteID" stdset="0">
+     <string>11</string>
+    </property>
+    <attribute name="title">
+     <string>Montréal</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBoxAdmin_4">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>30</y>
+       <width>120</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Admin</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_8">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%012#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="disableButton_7">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%0#</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBoxRepeteur_4">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>30</y>
+       <width>111</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Répéteur</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_9">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*55#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="disableButton_8">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*55*</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBoxRepeteur_5">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>30</y>
+       <width>111</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>RX3</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_11">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Vers TX1</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*63*</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="disableButton_10">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>120</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Vers lien IP</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*63#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="enableButton_13">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pas de lien</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*62*</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="enableButton_14">
+      <property name="geometry">
+       <rect>
+        <x>19</x>
+        <y>60</y>
+        <width>81</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lien actif</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*62#</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>130</y>
+       <width>120</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Fonctions</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_15">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Redémarrer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%1#</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_Fortune">
+    <property name="SiteID" stdset="0">
+     <string>06</string>
+    </property>
+    <attribute name="title">
+     <string>Camp Fortune</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBoxLien_2">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>20</y>
+       <width>121</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Lien</string>
+     </property>
+     <widget class="QPushButton" name="LienOn_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*60*</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="LienOff_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*60#</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBoxAdmin_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>20</y>
+       <width>120</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Admin</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%9012#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="disableButton_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%90#</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBoxRepeteur_2">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>20</y>
+       <width>121</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Répéteur</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_4">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*54#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="disableButton_4">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*54*</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_5">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>120</y>
+       <width>120</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Fonctions</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_16">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Redémarrer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%1#</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_6">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>121</y>
+       <width>120</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Radio 2</string>
+     </property>
+     <widget class="QPushButton" name="LienOn_9">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%2017#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="LienOff_9">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%2015#</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_7">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>120</y>
+       <width>120</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Radio 3</string>
+     </property>
+     <widget class="QPushButton" name="LienOn_10">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%2017#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="LienOff_10">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%2013#</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_Donaldson">
+    <property name="SiteID" stdset="0">
+     <string>53</string>
+    </property>
+    <attribute name="title">
+     <string>Donaldson</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBox_8">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>120</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Fonctions</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_17">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Redémarrer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%1#</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBoxAdmin_5">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>120</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Admin</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_18">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%012#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="disableButton_12">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%0#</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBoxRepeteur_6">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>10</y>
+       <width>111</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Répéteur</string>
+     </property>
+     <widget class="QPushButton" name="enableButton_19">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activer</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%02211#</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="disableButton_13">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Désactiver</string>
+      </property>
+      <property name="Command" stdset="0">
+       <string>*%02210#</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>450</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>310</y>
+     <width>58</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>DTMF</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="dtmfSeq">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>310</y>
+     <width>151</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="sendDTMF">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>310</y>
+     <width>86</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Envoyer</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SitesDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>47</x>
+     <y>457</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>188</x>
+     <y>457</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
