@@ -19,6 +19,7 @@
 *.*#
 core
 !core/
+thirdparty/
 tags
 .DS_Store
 .directory
