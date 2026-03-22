@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>4</number>
    </property>
    <widget class="QWidget" name="tab_Site49">
     <property name="SiteID" stdset="0">
@@ -1100,6 +1100,19 @@
    </property>
    <property name="text">
     <string>Envoyer</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="enable">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>310</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Enable DTMF</string>
    </property>
   </widget>
  </widget>

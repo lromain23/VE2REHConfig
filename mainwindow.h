@@ -30,7 +30,7 @@ private slots:
     void read_key(QString key, QLineEdit *widget);
 
 public slots:
-    void sendDTMF(QString cmd);
+    void sendDTMF(QString cmd,bool enable);
 
 private:
     Ui::MainWindow *ui;

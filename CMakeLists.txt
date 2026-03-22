@@ -3,7 +3,6 @@ project(VE2REHConfig LANGUAGES CXX)
 
 include(FetchContent)
 
-
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets Network)
 
 qt_standard_project_setup()
@@ -27,9 +26,9 @@ FetchContent_Declare(
 )
 
 set(BUILD_WITH_QT6 ON CACHE BOOL "Build qtkeychain with Qt6" FORCE)
-
+set(BUILD_TEST_APPLICATION OFF CACHE BOOL "Disable QtKeychain test app" FORCE)
+set(BUILD_TESTING OFF CACHE BOOL "Disable QtKeychain tests" FORCE)
 #FetchContent_MakeAvailable(qtkeychain)
-
 add_subdirectory(third_party/qtkeychain)
 
 target_link_libraries(VE2REHConfig
@@ -37,7 +36,7 @@ target_link_libraries(VE2REHConfig
         Qt::Core
         Qt::Widgets
 	Qt::Network
-        qtkeychain
+        qt6keychain
 )
 
 include(GNUInstallDirs)
@@ -54,3 +53,8 @@ qt_generate_deploy_app_script(
     NO_UNSUPPORTED_PLATFORM_ERROR
 )
 install(SCRIPT ${deploy_script})
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/ve2rehcfg.json
+    ${CMAKE_CURRENT_BINARY_DIR}/ve2rehcfg.json
+    COPYONLY
+)

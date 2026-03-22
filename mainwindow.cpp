@@ -6,8 +6,8 @@
 #include <QDebug>
 #include <qtkeychain/keychain.h>
 
-QString MainWindow::USERNAME_KEY = "PASSWORD";
-QString MainWindow::PASSWORD_KEY = "USERNAME";
+QString MainWindow::USERNAME_KEY = "VE2REHConfig/PASSWORD";
+QString MainWindow::PASSWORD_KEY = "VE2REHConfig/USERNAME";
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,9 +26,8 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::sendDTMF(QString cmd) {
-    bool enable = false;
-    if ( manager && enable) {
+void MainWindow::sendDTMF(QString cmd, bool enable) {
+    if ( manager && enable && false) {
         QUrlQuery postData;
         postData.addQueryItem("dtmf_regen",QString("Submit"));
         postData.addQueryItem("dtmf_r", cmd);
@@ -41,7 +40,7 @@ void MainWindow::sendDTMF(QString cmd) {
         // Connect to post reply finished signal
         connect(postReply, &QNetworkReply::finished, this, &MainWindow::onPostFinished);
     }
-    qDebug() << "Sending Command to web : " << cmd;
+    qDebug() << "Sending Command to web : " << cmd << " Enable : " << enable;
 }
 
 void MainWindow::onPostFinished() {
@@ -127,8 +126,10 @@ void MainWindow::onReplyFinished() {
         sitesDlg = new SitesDialog(this);
         sitesDlg->setAttribute(Qt::WA_DeleteOnClose);
         connect(sitesDlg,&SitesDialog::SendCommand,this,&MainWindow::sendDTMF);
+        this->hide();
         sitesDlg->exec();
     }
     reply->deleteLater();
+    qApp->quit();
 }
 

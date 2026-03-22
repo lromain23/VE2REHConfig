@@ -23,9 +23,10 @@ private slots:
 private:
     Ui::SitesDialog *ui;
     QList<QPushButton*> allButtons;
+    void loadJsonFromFile(void);
 
 signals:
-    void SendCommand(QString command);
+    void SendCommand(QString command, bool enable);
 };
 
 #endif // SITESDIALOG_H

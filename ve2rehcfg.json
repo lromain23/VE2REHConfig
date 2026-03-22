@@ -1,0 +1,33 @@
+{
+  "sites": [
+    {
+      "name": "SiteTab1",
+      "id": "49",
+      "functions": {
+        "Main": [
+          { "name": "Admin Mode", "command": "%01012#" },
+          { "name": "Reset", "command": "*%0100#" }
+        ],
+        "Auxiliary Ports": [
+          { "name": "AuxOut1 On", "command": "*%1234" },
+          { "name": "AuxOut1 Off", "command": "*%1234" }
+        ]
+      }
+    },
+    {
+      "name": "SiteTab2",
+      "id": "50",
+      "functions": {
+        "Main for Tab2": [
+          { "name": "Admin Mode", "command": "%01012#" },
+          { "name": "Reset", "command": "*%0100#" }
+        ],
+        "Auxiliary Ports for 2": [
+          { "name": "AuxOut1 On", "command": "*%1234" },
+          { "name": "AuxOut1 Off", "command": "*%1234" }
+        ]
+      }
+    }
+  ]
+}
+
