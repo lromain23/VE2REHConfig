@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QUrl>
 
 
 SitesDialog::SitesDialog(QWidget *parent)
@@ -13,12 +14,13 @@ SitesDialog::SitesDialog(QWidget *parent)
 {
     ui->setupUi(this);
     allButtons=findChildren<QPushButton*>();
+    connect(this,&SitesDialog::JsonDataReady,this,&SitesDialog::buildUIfromJSON);
     for (auto &button : allButtons) {
         if ( button != ui->sendDTMF ) {
           connect(button,&QPushButton::clicked,this,&SitesDialog::CommandButton_clicked);
         }
     }
-    loadJsonFromFile();
+    loadJsonFromURL();
 }
 
 SitesDialog::~SitesDialog()
@@ -56,8 +58,30 @@ void SitesDialog::on_sendDTMF_clicked()
     emit SendCommand(dtmf_seq,ui->enable->isChecked());
 }
 
+void SitesDialog::loadJsonFromURL() {
+    // Local Debug only
+    if (false) {
+        QNetworkAccessManager *manager=new QNetworkAccessManager(this);
+        QUrl json_config = QUrl("https://raw.githubusercontent.com/lromain23/VE2REHConfig/refs/heads/master/ve2rehcfg.json");
+        QNetworkRequest request(json_config);
+        QNetworkReply *reply=manager->get(request);
+        connect(reply,&QNetworkReply::finished,[reply,this]() {
+            if ( reply->error() == QNetworkReply::NoError) {
+                this->SiteData=reply->readAll();
+                //           qDebug() << "Fetched site data from URL : " << SiteData;
+                emit JsonDataReady();
+            } else {
+                loadJsonFromFile();
+            }
+        });
+    } else {
+        // For local debugging only.
+        loadJsonFromFile();
+    }
+}
 void SitesDialog::loadJsonFromFile()
 {
+// Process query here!
     QString path =
         QCoreApplication::applicationDirPath()
         + "/ve2rehcfg.json";
@@ -69,14 +93,17 @@ void SitesDialog::loadJsonFromFile()
         qDebug() << "Cannot open file:" << path;
         return;
     }
-
-    QByteArray data = file.readAll();
+    SiteData = file.readAll();
     file.close();
+    qDebug() << "Loading JSON from file";
+    emit JsonDataReady();
+}
 
+void SitesDialog::buildUIfromJSON(void) {
     QJsonParseError error;
     QJsonDocument doc =
-        QJsonDocument::fromJson(data, &error);
-
+        QJsonDocument::fromJson(SiteData, &error);
+    qDebug() << "Building UI from JSON";
     if (error.error != QJsonParseError::NoError)
     {
         qDebug() << "JSON parse error:"
@@ -100,7 +127,7 @@ void SitesDialog::loadJsonFromFile()
         QWidget *site_tab = new QWidget();
         site_tab->setProperty("SiteID",id);
         QVBoxLayout *layout = new QVBoxLayout(site_tab);
-    //    layout->addWidget(new QLabel(nom));
+        //    layout->addWidget(new QLabel(nom));
         std::list<QGroupBox*> groupbox_list;
         QJsonObject functions = site["functions"].toObject();
         for (auto [key,value] : functions.toVariantMap().asKeyValueRange()) {
@@ -108,7 +135,7 @@ void SitesDialog::loadJsonFromFile()
             QJsonArray categoryCommands = value.toJsonArray();
             QGroupBox *groupBox = new QGroupBox(site_tab);
             groupBox->setTitle(key);
-  //          layout->addWidget(groupBox);
+            //          layout->addWidget(groupBox);
             groupbox_list.push_front(groupBox);
             QHBoxLayout *groupLayout = new QHBoxLayout(groupBox);
             for (const QJsonValue &catCmd  : categoryCommands) {
@@ -129,4 +156,3 @@ void SitesDialog::loadJsonFromFile()
 
     }
 }
-

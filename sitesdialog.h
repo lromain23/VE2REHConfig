@@ -14,19 +14,22 @@ class SitesDialog : public QDialog
 public:
     explicit SitesDialog(QWidget *parent = nullptr);
     ~SitesDialog();
+    QByteArray SiteData;
 
 private slots:
     void CommandButton_clicked();
-
+    void buildUIfromJSON(void);
     void on_sendDTMF_clicked();
 
 private:
     Ui::SitesDialog *ui;
     QList<QPushButton*> allButtons;
     void loadJsonFromFile(void);
+    void loadJsonFromURL(void);
 
 signals:
     void SendCommand(QString command, bool enable);
+    void JsonDataReady(void);
 };
 
 #endif // SITESDIALOG_H
