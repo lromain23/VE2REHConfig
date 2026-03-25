@@ -127,7 +127,7 @@ void SitesDialog::buildUIfromJSON(void) {
         qDebug() << "Site:" << nom << "ID:" << id;
         QWidget *site_tab = new QWidget();
         site_tab->setProperty("SiteID",id);
-        QVBoxLayout *mainLayout = new QVBoxLayout(site_tab);
+        //QVBoxLayout *mainLayout = new QVBoxLayout(site_tab);
         // Scroll area
         QScrollArea *scroll = new QScrollArea;
         scroll->setWidgetResizable(true);
@@ -161,8 +161,8 @@ void SitesDialog::buildUIfromJSON(void) {
         }
         layout->addStretch();
         scroll->setWidget(contentWidget);
-        mainLayout->addWidget(scroll);
-        ui->SitesTab->addTab(site_tab, nom);
+        //mainLayout->addWidget(scroll);
+        ui->SitesTab->addTab(scroll, nom);
 
     }
 }
