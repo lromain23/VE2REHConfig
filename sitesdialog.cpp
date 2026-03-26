@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QScrollArea>
+#include <QGroupBox>
 #include <QUrl>
 
 
@@ -127,11 +128,9 @@ void SitesDialog::buildUIfromJSON(void) {
         qDebug() << "Site:" << nom << "ID:" << id;
         QWidget *site_tab = new QWidget();
         site_tab->setProperty("SiteID",id);
-        //QVBoxLayout *mainLayout = new QVBoxLayout(site_tab);
         // Scroll area
         QScrollArea *scroll = new QScrollArea;
         scroll->setWidgetResizable(true);
-
         // Content inside scroll area
         QWidget *contentWidget = new QWidget();
         QVBoxLayout *layout = new QVBoxLayout(contentWidget);
@@ -142,7 +141,6 @@ void SitesDialog::buildUIfromJSON(void) {
             QJsonArray categoryCommands = value.toJsonArray();
             QGroupBox *groupBox = new QGroupBox(site_tab);
             groupBox->setTitle(key);
-            //          layout->addWidget(groupBox);
             groupbox_list.push_front(groupBox);
             QHBoxLayout *groupLayout = new QHBoxLayout(groupBox);
             for (const QJsonValue &catCmd  : categoryCommands) {
@@ -152,6 +150,9 @@ void SitesDialog::buildUIfromJSON(void) {
                 qDebug() << "Cmd:"<<cmdName<<" DTMF:"<< cmdDTMF;
                 QPushButton *button = new QPushButton(cmdName,this);
                 button->setProperty("Command",cmdDTMF);
+                if ( ! dtmfCmd["tooltip"].isUndefined() ) {
+                    button->setToolTip(dtmfCmd["tooltip"].toString());
+                }
                 groupLayout->addWidget(button);
                 connect(button,&QPushButton::clicked,this,&SitesDialog::CommandButton_clicked);
             }
@@ -161,7 +162,6 @@ void SitesDialog::buildUIfromJSON(void) {
         }
         layout->addStretch();
         scroll->setWidget(contentWidget);
-        //mainLayout->addWidget(scroll);
         ui->SitesTab->addTab(scroll, nom);
 
     }

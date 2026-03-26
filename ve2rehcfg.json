@@ -1,105 +1,138 @@
 {
   "sites": [
     {
-      "name": "SiteTab1",
-      "id": "39",
-      "functions": {
-        "Main": [
-          { "name": "Admin Mode", "command": "%01012#" },
-          { "name": "Reset", "command": "*%0100#" }
-        ],
-        "Auxiliary Ports": [
-          { "name": "AuxOut1 On", "command": "*%1234" },
-          { "name": "AuxOut1 Off", "command": "*%1234" }
-        ]
-      }
-    },
-    {
-      "name": "CBay",
-      "id": "49",
-      "functions": {
-        "Main": [
-          { "name": "Admin Mode", "command": "%01012#" },
-          { "name": "Reset", "command": "*%0100#" }
-        ],
-        "Auxiliary Ports": [
-          { "name": "AuxOut1 On", "command": "*%1234" },
-          { "name": "AuxOut1 Off", "command": "*%1234" }
-        ],
-        "Admin" : [
-          { "name" : "Activer"   , "command" : "*%012#" },
-          {"name" : "Désactiver", "command" : "*%0#" }
-        ],
-        "Répéteur" : [
-          { "name" : "Activer"   , "command" : "*49#" },
-          { "name" : "Désactiver", "command" : "*49*" }
-        ]
-        }
-    },
-    {
       "name": "Campbell's Bay",
       "id": "49",
       "functions": {
-        "Main": [
-          { "name": "Admin Mode", "command": "%01012#" },
-          { "name": "Reset", "command": "*%0100#" }
-        ],
-        "Auxiliary Ports": [
-          { "name": "AuxOut1 On", "command": "*%1234" },
-          { "name": "AuxOut1 Off", "command": "*%1234" }
-        ],
-			 	"Admin" : [
-					{ "name" : "Activer"   , "command" : "*%012#" },
-					{ "name" : "Désactiver", "command" : "*%0#" }
-				],
-			 	"Répéteur" : [
-					{ "name" : "Activer"   , "command" : "*49#" },
-					{ "name" : "Désactiver", "command" : "*49*" }
-				],
-			 	"Lien" : [
-					{ "name" : "Activer"   , "command" : "*39#" },
-					{ "name" : "Désactiver", "command" : "*39*" }
-				],
-			 	"Fonctions" : [
-					{ "name" : "Redémarrer" , "command" : "*%1#" }
-				]
+	"Admin" : [
+		{ "name" : "Activer"   , "command" : "*%012#" },
+		{ "name" : "Désactiver", "command" : "*%0#" }
+	],
+	"Répéteur" : [
+		{ "name" : "Activer"   , "command" : "*49#" },
+		{ "name" : "Désactiver", "command" : "*49*" }
+	],
+	"Lien" : [
+		{ "name" : "Activer"   , "command" : "*39#" },
+		{ "name" : "Désactiver", "command" : "*39*" }
+	],
+	"Fonctions" : [
+		{ "name" : "Redémarrer" , "command" : "*%1#" }
+	]
       }
     },
     {
       "name": "Ripon",
       "id": "07",
       "functions": {
-        "Main": [
-          { "name": "Admin Mode", "command": "%01012#" },
-          { "name": "Reset", "command": "*%0100#" }
-        ],
-        "Auxiliary Ports": [
-          { "name": "AuxOut1 On", "command": "*%1234" },
-          { "name": "AuxOut1 Off", "command": "*%1234" }
-        ],
-			 	"Admin" : [
-					{ "name" : "Activer"   , "command" : "*%012#" },
-					{ "name" : "Désactiver", "command" : "*%0#" }
-				],
-			 	"Répéteur" : [
-					{ "name" : "Activer"   , "command" : "*58#" },
-					{ "name" : "Désactiver", "command" : "*58*" }
-				],
-			 	"Lien" : [
-					{ "name" : "Activer"   , "command" : "*%2017#" },
-					{ "name" : "Désactiver", "command" : "*%2016#" }
-				],
-			 	"Radio 2" : [
-					{ "name" : "Activer"   , "command" : "*%2017#" },
-					{ "name" : "Désactiver", "command" : "*%2015#" }
-				],
-			 	"Radio 3" : [
-					{ "name" : "Activer"   , "command" : "*%2017#" },
-					{ "name" : "Désactiver", "command" : "*%2013#" }
-				],
-			 	"Fonctions" : [
-					{ "name" : "Redémarrer" , "command" : "*%1#" }
-				]
+	"Admin" : [
+		{ "name" : "Activer"   , "command" : "*%012#" },
+		{ "name" : "Désactiver", "command" : "*%0#" }
+	],
+	"Répéteur" : [
+		{ "name" : "Activer"   , "command" : "*58#" },
+		{ "name" : "Désactiver", "command" : "*58*" }
+	],
+	"Lien" : [
+		{ "name" : "Activer"   , "command" : "*%2017#" },
+		{ "name" : "Désactiver", "command" : "*%2016#" }
+	],
+	"Radio 2" : [
+		{ "name" : "Activer"   , "command" : "*%2017#" },
+		{ "name" : "Désactiver", "command" : "*%2015#" }
+	],
+	"Radio 3" : [
+		{ "name" : "Activer"   , "command" : "*%2017#" },
+		{ "name" : "Désactiver", "command" : "*%2013#" }
+	],
+	"Fonctions" : [
+		{ "name" : "Redémarrer" , "command" : "*%1#" }
+	]
+      }
+    },
+    {
+      "name": "Montréal",
+      "id": "11",
+      "functions": {
+	"Admin" : [
+		{ "name" : "Activer"   , "command" : "*%012#" },
+		{ "name" : "Désactiver", "command" : "*%0#" }
+	],
+	"Répéteur" : [
+		{ "name" : "Activer"   , "command" : "*55#" },
+		{ "name" : "Désactiver", "command" : "*55*" }
+	],
+	"Lien" : [
+		{ "name" : "Activer"   , "command" : "*%2017#" },
+		{ "name" : "Désactiver", "command" : "*%2016#" }
+	],
+	"Receiver 3" : [
+                { "name" : "Lien Off"   , "command" : "*62*", "tooltip" : "Désactive tousles liens" },
+		{ "name" : "Lien On", "command" : "*62#" },
+		{ "name" : "Vers TX1", "command" : "*63*" },
+		{ "name" : "Vers IP", "command" : "*63#" }
+	],
+	"Fonctions" : [
+		{ "name" : "Redémarrer" , "command" : "*%1#" }
+	]
+      }
+    },
+    {
+      "name": "Camp Fortune",
+      "id": "06",
+      "functions": {
+	"Admin" : [
+		{ "name" : "Activer"   , "command" : "*%012#" },
+		{ "name" : "Désactiver", "command" : "*%0#" }
+	],
+	"Répéteur" : [
+		{ "name" : "Activer"   , "command" : "*58#" },
+		{ "name" : "Désactiver", "command" : "*58*" }
+	],
+	"Lien" : [
+		{ "name" : "Activer"   , "command" : "*%2017#" },
+		{ "name" : "Désactiver", "command" : "*%2016#" }
+	],
+	"Radio 2" : [
+		{ "name" : "Activer"   , "command" : "*%2017#" },
+		{ "name" : "Désactiver", "command" : "*%2015#" }
+	],
+	"Radio 3" : [
+		{ "name" : "Activer"   , "command" : "*%2017#" },
+		{ "name" : "Désactiver", "command" : "*%2013#" }
+	],
+	"Fonctions" : [
+		{ "name" : "Redémarrer" , "command" : "*%1#" }
+	]
+      }
+    },
+    {
+      "name": "Donaldson",
+      "id": "53",
+      "functions": {
+	"Admin" : [
+		{ "name" : "Activer"   , "command" : "*%012#" },
+		{ "name" : "Désactiver", "command" : "*%0#" }
+	],
+	"Répéteur" : [
+		{ "name" : "Activer"   , "command" : "*%02211#" },
+		{ "name" : "Désactiver", "command" : "*%02210#" }
+	],
+	"Lien" : [
+		{ "name" : "Activer"   , "command" : "*%2017#" },
+		{ "name" : "Désactiver", "command" : "*%2016#" }
+	],
+	"Radio 2" : [
+		{ "name" : "Activer"   , "command" : "*%2017#" },
+		{ "name" : "Désactiver", "command" : "*%2015#" }
+	],
+	"Radio 3" : [
+		{ "name" : "Activer"   , "command" : "*%2017#" },
+		{ "name" : "Désactiver", "command" : "*%2013#" }
+	],
+	"Fonctions" : [
+		{ "name" : "Redémarrer" , "command" : "*%1#" }
+	]
       }
     }
   ]
