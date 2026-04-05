@@ -62,7 +62,7 @@ void SitesDialog::on_sendDTMF_clicked()
 
 void SitesDialog::loadJsonFromURL() {
     // Local Debug only
-    if (false) {
+    if (true) {
         QNetworkAccessManager *manager=new QNetworkAccessManager(this);
         QUrl json_config = QUrl("https://raw.githubusercontent.com/lromain23/VE2REHConfig/refs/heads/master/ve2rehcfg.json");
         QNetworkRequest request(json_config);
@@ -70,7 +70,7 @@ void SitesDialog::loadJsonFromURL() {
         connect(reply,&QNetworkReply::finished,[reply,this]() {
             if ( reply->error() == QNetworkReply::NoError) {
                 this->SiteData=reply->readAll();
-                //           qDebug() << "Fetched site data from URL : " << SiteData;
+                qDebug() << "Fetched site data from URL : " << SiteData;
                 emit JsonDataReady();
             } else {
                 loadJsonFromFile();
