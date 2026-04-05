@@ -27,7 +27,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::sendDTMF(QString cmd, bool enable) {
-    if ( manager && enable && false) {
+    if ( manager && enable) {
         QUrlQuery postData;
         postData.addQueryItem("dtmf_regen",QString("Submit"));
         postData.addQueryItem("dtmf_r", cmd);
