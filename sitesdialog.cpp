@@ -2,9 +2,7 @@
 #include "ui_sitesdialog.h"
 #include "mainwindow.h"
 #include <qforeach.h>
-#include <QPushButton>
 #include <QVBoxLayout>
-#include <QPushButton>
 #include <QScrollArea>
 #include <QGroupBox>
 #include <QUrl>
@@ -37,7 +35,6 @@ void SitesDialog::CommandButton_clicked()
         qWarning() << "No button sender for command action";
         return;
     }
-
     QString buttonCmd = button->property("Command").toString();
     QString siteId;
 
@@ -48,7 +45,6 @@ void SitesDialog::CommandButton_clicked()
             break;
         }
     }
-
     qDebug() << "SiteID" << siteId << "Command:" << buttonCmd;
     if (buttonCmd.contains("%")) {
         emit SendCommand(buttonCmd.replace("%", siteId, Qt::CaseInsensitive), ui->enable->isChecked());
