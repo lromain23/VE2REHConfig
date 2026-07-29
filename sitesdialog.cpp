@@ -58,6 +58,8 @@ void SitesDialog::CommandButton_clicked()
 }
 
 
+
+
 void SitesDialog::on_sendDTMF_clicked()
 {
     auto dtmf_seq = ui->dtmfSeq->text();
@@ -66,8 +68,11 @@ void SitesDialog::on_sendDTMF_clicked()
 }
 
 void SitesDialog::loadJsonFromURL() {
-    // Local Debug only
-    if (true) {
+    // First try to load from local file
+    loadJsonFromFile();
+    
+    // If the local file loading failed (SiteData is empty), then load from URL
+    if (SiteData.isEmpty()) {
         QNetworkAccessManager *manager=new QNetworkAccessManager(this);
         QUrl json_config = QUrl("https://raw.githubusercontent.com/lromain23/VE2REHConfig/refs/heads/master/ve2rehcfg.json");
         QNetworkRequest request(json_config);
@@ -77,13 +82,8 @@ void SitesDialog::loadJsonFromURL() {
                 this->SiteData=reply->readAll();
                 qDebug() << "Fetched site data from URL : " << SiteData;
                 emit JsonDataReady();
-            } else {
-                loadJsonFromFile();
             }
         });
-    } else {
-        // For local debugging only.
-        loadJsonFromFile();
     }
 }
 void SitesDialog::loadJsonFromFile()
