@@ -32,23 +32,28 @@ SitesDialog::~SitesDialog()
 
 void SitesDialog::CommandButton_clicked()
 {
-    QPushButton *button = qobject_cast<QPushButton *>(sender());
-    QString ButtonCmd = button->property("Command").toString();
-    QWidget *pw = button->parentWidget();
-    QString SiteID = QString();
-    bool done=false;
-    while (pw && !done) {
-        if (pw->property("SiteID").isValid()) {
-            SiteID = pw->property("SiteID").toString();
-            done=true;
-        }
-        pw = pw->parentWidget();
+    auto *button = qobject_cast<QPushButton *>(sender());
+    if (!button) {
+        qWarning() << "No button sender for command action";
+        return;
     }
-    qDebug() << "SiteID" << SiteID << " Command : " << ButtonCmd;
-    if ( ButtonCmd.contains("%") ) {
-        emit SendCommand(ButtonCmd.replace("%",SiteID,Qt::CaseInsensitive),ui->enable->isChecked());
+
+    QString buttonCmd = button->property("Command").toString();
+    QString siteId;
+
+    for (QObject *obj = button; obj; obj = obj->parent()) {
+        const QVariant siteIdVariant = obj->property("SiteID");
+        if (siteIdVariant.isValid()) {
+            siteId = siteIdVariant.toString();
+            break;
+        }
+    }
+
+    qDebug() << "SiteID" << siteId << "Command:" << buttonCmd;
+    if (buttonCmd.contains("%")) {
+        emit SendCommand(buttonCmd.replace("%", siteId, Qt::CaseInsensitive), ui->enable->isChecked());
     } else {
-        emit SendCommand(ButtonCmd,ui->enable->isChecked());
+        emit SendCommand(buttonCmd, ui->enable->isChecked());
     }
 }
 
@@ -130,16 +135,18 @@ void SitesDialog::buildUIfromJSON(void) {
         site_tab->setProperty("SiteID",id);
         // Scroll area
         QScrollArea *scroll = new QScrollArea;
+        scroll->setProperty("SiteID", id);
         scroll->setWidgetResizable(true);
         // Content inside scroll area
         QWidget *contentWidget = new QWidget();
+        contentWidget->setProperty("SiteID", id);
         QVBoxLayout *layout = new QVBoxLayout(contentWidget);
         std::list<QGroupBox*> groupbox_list;
         QJsonObject functions = site["functions"].toObject();
         for (auto [key,value] : functions.toVariantMap().asKeyValueRange()) {
             qDebug () << "Category : " << key.toStdString();
             QJsonArray categoryCommands = value.toJsonArray();
-            QGroupBox *groupBox = new QGroupBox(site_tab);
+            QGroupBox *groupBox = new QGroupBox(contentWidget);
             groupBox->setTitle(key);
             groupbox_list.push_front(groupBox);
             QHBoxLayout *groupLayout = new QHBoxLayout(groupBox);
@@ -148,7 +155,7 @@ void SitesDialog::buildUIfromJSON(void) {
                 QString cmdName = dtmfCmd["name"].toString();
                 QString cmdDTMF = dtmfCmd["command"].toString();
                 qDebug() << "Cmd:"<<cmdName<<" DTMF:"<< cmdDTMF;
-                QPushButton *button = new QPushButton(cmdName,this);
+                QPushButton *button = new QPushButton(cmdName,groupBox);
                 button->setProperty("Command",cmdDTMF);
                 if ( ! dtmfCmd["tooltip"].isUndefined() ) {
                     button->setToolTip(dtmfCmd["tooltip"].toString());
