@@ -6,6 +6,7 @@
 #include <QScrollArea>
 #include <QGroupBox>
 #include <QUrl>
+#include <QDir>
 
 
 SitesDialog::SitesDialog(QWidget *parent)
@@ -86,19 +87,17 @@ void SitesDialog::loadJsonFromFile()
 {
 // Process query here!
     QString path =
-        QCoreApplication::applicationDirPath()
+        QDir::currentPath()
         + "/ve2rehcfg.json";
 
     QFile file(path);
 
     if (!file.open(QIODevice::ReadOnly))
     {
-        qDebug() << "Cannot open file:" << path;
         return;
     }
     SiteData = file.readAll();
     file.close();
-    qDebug() << "Loading JSON from file";
     emit JsonDataReady();
 }
 
@@ -106,17 +105,13 @@ void SitesDialog::buildUIfromJSON(void) {
     QJsonParseError error;
     QJsonDocument doc =
         QJsonDocument::fromJson(SiteData, &error);
-    qDebug() << "Building UI from JSON";
     if (error.error != QJsonParseError::NoError)
     {
-        qDebug() << "JSON parse error:"
-                 << error.errorString();
         return;
     }
 
     if (!doc.isObject())
     {
-        qDebug() << "Invalid JSON root";
         return;
     }
 
@@ -126,7 +121,6 @@ void SitesDialog::buildUIfromJSON(void) {
         QJsonObject site = siteValue.toObject();
         QString nom = site["name"].toString();
         QString id  = site["id"].toString();
-        qDebug() << "Site:" << nom << "ID:" << id;
         // Scroll area
         QScrollArea *scroll = new QScrollArea;
 
@@ -139,7 +133,6 @@ void SitesDialog::buildUIfromJSON(void) {
         std::list<QGroupBox*> groupbox_list;
         QJsonObject functions = site["functions"].toObject();
         for (auto [key,value] : functions.toVariantMap().asKeyValueRange()) {
-            qDebug () << "Category : " << key.toStdString();
             QJsonArray categoryCommands = value.toJsonArray();
             QGroupBox *groupBox = new QGroupBox(contentWidget);
             groupBox->setTitle(key);
@@ -149,7 +142,6 @@ void SitesDialog::buildUIfromJSON(void) {
                 QJsonObject dtmfCmd = catCmd.toObject();
                 QString cmdName = dtmfCmd["name"].toString();
                 QString cmdDTMF = dtmfCmd["command"].toString();
-                qDebug() << "Cmd:"<<cmdName<<" DTMF:"<< cmdDTMF;
                 QPushButton *button = new QPushButton(cmdName,groupBox);
                 button->setProperty("Command",cmdDTMF);
                 if ( ! dtmfCmd["tooltip"].isUndefined() ) {
