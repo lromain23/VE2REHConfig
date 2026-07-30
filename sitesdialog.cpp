@@ -127,10 +127,9 @@ void SitesDialog::buildUIfromJSON(void) {
         QString nom = site["name"].toString();
         QString id  = site["id"].toString();
         qDebug() << "Site:" << nom << "ID:" << id;
-        QWidget *site_tab = new QWidget();
-        site_tab->setProperty("SiteID",id);
         // Scroll area
         QScrollArea *scroll = new QScrollArea;
+
         scroll->setProperty("SiteID", id);
         scroll->setWidgetResizable(true);
         // Content inside scroll area

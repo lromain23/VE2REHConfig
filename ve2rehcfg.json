@@ -62,6 +62,10 @@
 		{ "name" : "Activer"   , "command" : "*55#" },
 		{ "name" : "Désactiver", "command" : "*55*" }
 	],
+	"Répéteur Local" : [
+		{ "name" : "Activer"   , "command" : "*%2056#", "tooltip" : "Mode répéteur local via contrôleur"},
+		{ "name" : "Désactiver", "command" : "*%2054#" }
+	],
 	"Lien" : [
 		{ "name" : "Activer"   , "command" : "*%2017#" },
 		{ "name" : "Désactiver", "command" : "*%2016#" }
