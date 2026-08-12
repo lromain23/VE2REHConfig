@@ -28,6 +28,7 @@ private slots:
     void onPostFinished();
     void save_key(QString key, QString value);
     void read_key(QString key, QLineEdit *widget);
+    void onSitesDialogClosed(); // New slot for handling dialog closing
 
 public slots:
     void sendDTMF(QString cmd,bool enable);
@@ -37,6 +38,8 @@ private:
     std::unique_ptr<QNetworkAccessManager> manager;
     static QString USERNAME_KEY;
     static QString PASSWORD_KEY;
+    QString m_username;
+    QString m_password;
 
 };
 #endif // MAINWINDOW_H

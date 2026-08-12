@@ -5,6 +5,7 @@
 #include "sitesdialog.h"
 #include <QDebug>
 #include <qtkeychain/keychain.h>
+#include <QApplication>
 
 QString MainWindow::USERNAME_KEY = "VE2REHConfig/PASSWORD";
 QString MainWindow::PASSWORD_KEY = "VE2REHConfig/USERNAME";
@@ -23,6 +24,13 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    // Cancel any pending network requests before destruction
+    if (manager) {
+        // Reset the manager to clean up resources properly
+        manager.reset();
+    }
+    
+    // Ensure UI is deleted properly
     delete ui;
 }
 
@@ -61,13 +69,17 @@ void MainWindow::on_pushButton_clicked()
     auto userName = ui->userName->text();
     auto password = ui->password->text();
 
+    // Store credentials for later use
+    m_username = userName;
+    m_password = password;
+
     connect(manager.get(), &QNetworkAccessManager::authenticationRequired,
             this,
-            [userName,password](QNetworkReply *reply, QAuthenticator *authenticator)
+            [this](QNetworkReply *reply, QAuthenticator *authenticator)
             {
                 Q_UNUSED(reply);
-                authenticator->setUser(userName);
-                authenticator->setPassword(password);
+                authenticator->setUser(m_username);
+                authenticator->setPassword(m_password);
             });
 
     QNetworkRequest request(QUrl("http://irlp.ve2reh.net:15426/dtmf/index.php"));
@@ -75,7 +87,7 @@ void MainWindow::on_pushButton_clicked()
     QNetworkReply *reply = manager->get(request);
 
     connect(reply, &QNetworkReply::finished, this, &MainWindow::onReplyFinished);
-
+    // Don't call deleteLater() here as it's managed by Qt's object hierarchy
 }
 void MainWindow::save_key(QString key, QString value)
 {
@@ -112,8 +124,13 @@ void MainWindow::read_key(QString key, QLineEdit *widget)
 }
 
 void MainWindow::onReplyFinished() {
-    SitesDialog *sitesDlg;
     QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
+    
+    // Check if reply is valid before proceeding
+    if (!reply) {
+        return;
+    }
+    
     if (reply->error() != QNetworkReply::NoError) {
         qDebug() << "Error:" << reply->errorString();
     } else {
@@ -123,13 +140,22 @@ void MainWindow::onReplyFinished() {
           save_key(MainWindow::USERNAME_KEY,ui->userName->text());
           save_key(MainWindow::PASSWORD_KEY,ui->password->text());
         }
-        sitesDlg = new SitesDialog(this);
+        
+        // Create and show the dialog properly
+        SitesDialog *sitesDlg = new SitesDialog(this);
         sitesDlg->setAttribute(Qt::WA_DeleteOnClose);
         connect(sitesDlg,&SitesDialog::SendCommand,this,&MainWindow::sendDTMF);
+        connect(sitesDlg, &QDialog::finished, this, &MainWindow::onSitesDialogClosed); // Connect to dialog finished signal
         this->hide();
         sitesDlg->exec();
     }
+    
+    // Clean up the reply properly
     reply->deleteLater();
-    qApp->quit();
+}
+
+void MainWindow::onSitesDialogClosed() {
+    // When the SitesDialog closes, quit the application
+    QApplication::quit();
 }
 

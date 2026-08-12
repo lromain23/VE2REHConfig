@@ -80,6 +80,7 @@ void SitesDialog::loadJsonFromURL() {
                 qDebug() << "Fetched site data from URL : " << SiteData;
                 emit JsonDataReady();
             }
+            reply->deleteLater(); // Clean up the reply properly
         });
     }
 }
