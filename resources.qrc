@@ -1,1 +1,5 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/icons">
+        <file>VE2REH_1024.png</file>
+    </qresource>
+</RCC>

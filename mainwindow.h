@@ -3,8 +3,8 @@
 
 #include <QMainWindow>
 #include <QtNetwork>
-#include <qlineedit.h>
-#include <qnetworkreply.h>
+#include <QLineEdit>
+#include <QNetworkReply>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
