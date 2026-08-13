@@ -93,23 +93,52 @@ void MainWindow::on_pushButton_clicked()
 }
 void MainWindow::save_key(QString key, QString value)
 {
-#ifdef Q_OS_WIN
-    qtkeychain::setPassword(key, value, "VE2REHConfig");
-#else
-    QSettings settings;
-    settings.setValue(key, value);
-#endif
-}
+    auto *job = new QKeychain::WritePasswordJob("VE2REHConfig", this);
 
+    job->setKey(key);
+    job->setTextData(value);
+
+    connect(job, &QKeychain::WritePasswordJob::finished,
+            this, [job]() {
+
+                if (job->error()) {
+                    qDebug() << "Failed to save password:"
+                             << job->errorString();
+                } else {
+                    qDebug() << "Password saved successfully";
+                }
+            });
+
+    job->start();
+}
 void MainWindow::read_key(QString key, QLineEdit *widget)
 {
 #ifdef Q_OS_WIN
-    QString value = qtkeychain::readPassword(key, "VE2REHConfig");
-    widget->setText(value);
+
+    auto *job = new QKeychain::ReadPasswordJob("VE2REHConfig", this);
+
+    job->setKey(key);
+
+    connect(job, &QKeychain::ReadPasswordJob::finished,
+            this, [job, widget]() {
+
+                if (job->error()) {
+                    qDebug() << "Failed to read key:"
+                             << job->errorString();
+                    return;
+                }
+
+                widget->setText(job->textData());
+            });
+
+    job->start();
+
 #else
+
     QSettings settings;
     QString value = settings.value(key).toString();
     widget->setText(value);
+
 #endif
 }
 

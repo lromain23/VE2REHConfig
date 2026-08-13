@@ -24,7 +24,7 @@ qt_add_executable(VE2REHConfig
 FetchContent_Declare(
     qtkeychain
     GIT_REPOSITORY https://github.com/frankosterfeld/qtkeychain.git
-    GIT_TAG main
+    GIT_TAG 0.17
 )
 
 set(BUILD_WITH_QT6 ON CACHE BOOL "Build qtkeychain with Qt6" FORCE)
