@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Sites</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/icon.png</normaloff>:/icons/icon.png</iconset>
+  </property>
   <widget class="QTabWidget" name="SitesTab">
    <property name="geometry">
     <rect>
@@ -89,7 +93,9 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>pushButton</sender>

@@ -7,6 +7,8 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets Network)
 
 qt_standard_project_setup()
 
+set(CMAKE_AUTORCC ON)
+
 qt_add_executable(VE2REHConfig
     WIN32 MACOSX_BUNDLE
     main.cpp
@@ -16,7 +18,8 @@ qt_add_executable(VE2REHConfig
         sitesdialog.h 
 	sitesdialog.cpp 
 	sitesdialog.ui
-
+        resources.qrc
+        resources.rc
 )
 
 FetchContent_Declare(
