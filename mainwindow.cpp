@@ -4,11 +4,11 @@
 #include <QNetworkCookieJar>
 #include "sitesdialog.h"
 #include <QDebug>
-#include <qtkeychain/keychain.h>
 #include <QApplication>
+#include <QSettings>
 
-QString MainWindow::USERNAME_KEY = "VE2REHConfig/PASSWORD";
-QString MainWindow::PASSWORD_KEY = "VE2REHConfig/USERNAME";
+QString MainWindow::USERNAME_KEY = "VE2REHConfig/USERNAME";
+QString MainWindow::PASSWORD_KEY = "VE2REHConfig/PASSWORD";
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -91,36 +91,15 @@ void MainWindow::on_pushButton_clicked()
 }
 void MainWindow::save_key(QString key, QString value)
 {
-    auto *job = new QKeychain::WritePasswordJob("VE2REHConfig");
-
-    job->setKey(key);
-    job->setTextData(value);
-    connect(job, &QKeychain::Job::finished,
-            [job]() {
-                if (job->error()) {
-                    qDebug() << "Error:" << job->errorString();
-                }
-                job->deleteLater();
-            });
-
-    job->start();
+    QSettings settings;
+    settings.setValue(key, value);
 }
 
 void MainWindow::read_key(QString key, QLineEdit *widget)
 {
-    auto *job = new QKeychain::ReadPasswordJob("VE2REHConfig", this);
-    job->setKey(key);
-    connect(job, &QKeychain::Job::finished,
-            this, [this, job, widget]() {
-
-                if (job->error()) {
-                    qDebug() << "Keychain error:" << job->errorString();
-                } else {
-                    widget->setText(job->textData());
-                }
-                job->deleteLater();
-            });
-    job->start();
+    QSettings settings;
+    QString value = settings.value(key).toString();
+    widget->setText(value);
 }
 
 void MainWindow::onReplyFinished() {
@@ -158,4 +137,3 @@ void MainWindow::onSitesDialogClosed() {
     // When the SitesDialog closes, quit the application
     QApplication::quit();
 }
-
