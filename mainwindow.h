@@ -5,6 +5,7 @@
 #include <QtNetwork>
 #include <QLineEdit>
 #include <QNetworkReply>
+#include <QList>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

@@ -2,6 +2,7 @@
 #define SITESDIALOG_H
 
 #include <QDialog>
+#include <QPushButton>
 
 namespace Ui {
 class SitesDialog;
