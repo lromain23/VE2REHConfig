@@ -74,6 +74,7 @@ void MainWindow::on_pushButton_clicked()
     m_username = userName;
     m_password = password;
 
+    // Set up authentication for future requests
     connect(manager.get(), &QNetworkAccessManager::authenticationRequired,
             this,
             [this](QNetworkReply *reply, QAuthenticator *authenticator)
