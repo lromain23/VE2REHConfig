@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QApplication>
 #include <QSettings>
+#include <qtkeychain/keychain.h>
 
 QString MainWindow::USERNAME_KEY = "VE2REHConfig/USERNAME";
 QString MainWindow::PASSWORD_KEY = "VE2REHConfig/PASSWORD";
@@ -91,15 +92,24 @@ void MainWindow::on_pushButton_clicked()
 }
 void MainWindow::save_key(QString key, QString value)
 {
+#ifdef Q_OS_WIN
+    qtkeychain::setPassword(key, value, "VE2REHConfig");
+#else
     QSettings settings;
     settings.setValue(key, value);
+#endif
 }
 
 void MainWindow::read_key(QString key, QLineEdit *widget)
 {
+#ifdef Q_OS_WIN
+    QString value = qtkeychain::readPassword(key, "VE2REHConfig");
+    widget->setText(value);
+#else
     QSettings settings;
     QString value = settings.value(key).toString();
     widget->setText(value);
+#endif
 }
 
 void MainWindow::onReplyFinished() {

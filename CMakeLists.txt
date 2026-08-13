@@ -19,7 +19,6 @@ qt_add_executable(VE2REHConfig
 	sitesdialog.cpp 
 	sitesdialog.ui
         resources.qrc
-        resources.rc
 )
 
 FetchContent_Declare(
