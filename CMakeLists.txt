@@ -15,11 +15,16 @@ qt_add_executable(VE2REHConfig
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
-        sitesdialog.h 
-	sitesdialog.cpp 
-	sitesdialog.ui
-        resources.qrc
+    sitesdialog.h 
+    sitesdialog.cpp 
+    sitesdialog.ui
+    resources.qrc
 )
+
+# Add resources.rc for Windows builds
+if(WIN32)
+    target_sources(VE2REHConfig PRIVATE resources.rc)
+endif()
 
 FetchContent_Declare(
     qtkeychain
@@ -31,13 +36,12 @@ set(BUILD_WITH_QT6 ON CACHE BOOL "Build qtkeychain with Qt6" FORCE)
 set(BUILD_TEST_APPLICATION OFF CACHE BOOL "Disable QtKeychain test app" FORCE)
 set(BUILD_TESTING OFF CACHE BOOL "Disable QtKeychain tests" FORCE)
 FetchContent_MakeAvailable(qtkeychain)
-#add_subdirectory(third_party/qtkeychain)
 
 target_link_libraries(VE2REHConfig
     PRIVATE
         Qt::Core
         Qt::Widgets
-	Qt::Network
+        Qt::Network
         qt6keychain
 )
 
