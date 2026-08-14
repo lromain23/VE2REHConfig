@@ -71,13 +71,12 @@ void SitesDialog::loadJsonFromURL() {
     // If the local file loading failed (SiteData is empty), then load from URL
     if (SiteData.isEmpty()) {
         QNetworkAccessManager *manager=new QNetworkAccessManager(this);
-        QUrl json_config = QUrl("https://raw.githubusercontent.com/lromain23/VE2REHConfig/refs/heads/master/ve2rehcfg.json");
+        QUrl json_config = QUrl("https://raw.githubusercontent.com/lromain23/VE2REHConfig/refs/heads/master/sites_config.json");
         QNetworkRequest request(json_config);
         QNetworkReply *reply=manager->get(request);
         connect(reply,&QNetworkReply::finished,[reply,this]() {
             if ( reply->error() == QNetworkReply::NoError) {
                 this->SiteData=reply->readAll();
-                qDebug() << "Fetched site data from URL : " << SiteData;
                 emit JsonDataReady();
             }
             reply->deleteLater(); // Clean up the reply properly
@@ -89,7 +88,7 @@ void SitesDialog::loadJsonFromFile()
 // Process query here!
     QString path =
         QDir::currentPath()
-        + "/ve2rehcfg.json";
+        + ":/sites_config.json";
 
     QFile file(path);
 

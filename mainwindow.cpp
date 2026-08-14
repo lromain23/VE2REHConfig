@@ -7,6 +7,9 @@
 #include <QApplication>
 #include <QSettings>
 #include <qtkeychain/keychain.h>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QMessageBox>
 
 QString MainWindow::USERNAME_KEY = "VE2REHConfig/USERNAME";
 QString MainWindow::PASSWORD_KEY = "VE2REHConfig/PASSWORD";
@@ -21,6 +24,10 @@ MainWindow::MainWindow(QWidget *parent)
     manager = std::make_unique<QNetworkAccessManager>(this);
     QNetworkCookieJar *cookieJar = new QNetworkCookieJar(this);
     manager->setCookieJar(cookieJar);
+    // Add network request to fetch config from URL
+    QNetworkRequest configRequest(QUrl("https://raw.githubusercontent.com/lromain23/VE2REHConfig/refs/heads/master/server_config.json"));
+    QNetworkReply *configReply = manager->get(configRequest);
+    connect(configReply, &QNetworkReply::finished, this, &::MainWindow::onConfigReplyFinished);
 }
 
 MainWindow::~MainWindow()
@@ -41,15 +48,36 @@ void MainWindow::sendDTMF(QString cmd, bool enable) {
         postData.addQueryItem("dtmf_regen",QString("Submit"));
         postData.addQueryItem("dtmf_r", cmd);
         // Post request
-        QUrl url("http://irlp.ve2reh.net:15426/dtmf/index.php");
-        QNetworkRequest postRequest(url);
-
+        if (m_dtmfUrl.isEmpty()) {
+            QMessageBox::critical(this, "Error", "DTMF URL is empty, cannot send DTMF command");
+            return;
+        }
+        QUrl url(m_dtmfUrl);
+         QNetworkRequest postRequest(url);
         postRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
         QNetworkReply *postReply = manager->post(postRequest, postData.query(QUrl::FullyEncoded).toUtf8());
         // Connect to post reply finished signal
         connect(postReply, &QNetworkReply::finished, this, &MainWindow::onPostFinished);
     }
-    qDebug() << "Sending Command to web : " << cmd << " Enable : " << enable;
+    qDebug() << "Sending Command to DTMF server : " << cmd << " Enable : " << enable;
+}
+
+void MainWindow::onConfigReplyFinished() {
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    if (reply) {
+        if (reply->error() == QNetworkReply::NoError) {
+            QJsonDocument doc = QJsonDocument::fromJson(reply->readAll());
+            if (!doc.isNull() && doc.isObject()) {
+                QJsonObject obj = doc.object();
+                if (obj.contains("dtmf_url")) {
+                    m_dtmfUrl = obj["dtmf_url"].toString();
+                }
+            }
+        } else {
+            qDebug() << "Failed to fetch config from URL:" << reply->errorString();
+        }
+        reply->deleteLater();
+    }
 }
 
 void MainWindow::onPostFinished() {
@@ -58,7 +86,6 @@ void MainWindow::onPostFinished() {
         if (reply->error() != QNetworkReply::NoError) {
             qDebug() << "POST failed:" << reply->errorString();
         } else {
-            qDebug() << "POST successful, response:";
             qDebug() << reply->readAll();
         }
         reply->deleteLater();
@@ -85,9 +112,7 @@ void MainWindow::on_pushButton_clicked()
             });
 
     QNetworkRequest request(QUrl("http://irlp.ve2reh.net:15426/dtmf/index.php"));
-
     QNetworkReply *reply = manager->get(request);
-
     connect(reply, &QNetworkReply::finished, this, &MainWindow::onReplyFinished);
     // Don't call deleteLater() here as it's managed by Qt's object hierarchy
 }
@@ -104,8 +129,6 @@ void MainWindow::save_key(QString key, QString value)
                 if (job->error()) {
                     qDebug() << "Failed to save password:"
                              << job->errorString();
-                } else {
-                    qDebug() << "Password saved successfully";
                 }
             });
 
@@ -153,8 +176,6 @@ void MainWindow::onReplyFinished() {
     if (reply->error() != QNetworkReply::NoError) {
         qDebug() << "Error:" << reply->errorString();
     } else {
-        qDebug() << "Page content:";
-        qDebug() << reply->readAll();
         if ( ui->saveLogin->isChecked() ) {
           save_key(MainWindow::USERNAME_KEY,ui->userName->text());
           save_key(MainWindow::PASSWORD_KEY,ui->password->text());

@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
-    <normaloff>:/icons/icon.png</normaloff>:/icons/icon.png</iconset>
+    <normaloff>:/icons/VE2REHConfig.ico</normaloff>:/icons/VE2REHConfig.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLineEdit" name="userName">
@@ -109,7 +109,7 @@
      <x>0</x>
      <y>0</y>
      <width>253</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuConnexio">

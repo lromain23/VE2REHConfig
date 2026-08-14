@@ -7,6 +7,7 @@
 #include <QNetworkReply>
 #include <QList>
 #include <memory>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,13 +28,14 @@ private slots:
     void on_pushButton_clicked();
 //    void onWebFinished(QNetworkReply* reply);
     void onReplyFinished();
+    void onConfigReplyFinished();
     void onPostFinished();
     void save_key(QString key, QString value);
     void read_key(QString key, QLineEdit *widget);
     void onSitesDialogClosed(); // New slot for handling dialog closing
 
 public slots:
-    void sendDTMF(QString cmd,bool enable);
+    void sendDTMF(QString command, bool enable);
 
 private:
     Ui::MainWindow *ui;
@@ -42,6 +44,7 @@ private:
     static QString PASSWORD_KEY;
     QString m_username;
     QString m_password;
+    QString m_dtmfUrl;
 
 };
 #endif // MAINWINDOW_H

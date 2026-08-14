@@ -60,7 +60,7 @@ qt_generate_deploy_app_script(
 )
 install(SCRIPT ${deploy_script})
 configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/ve2rehcfg.json
-    ${CMAKE_CURRENT_BINARY_DIR}/ve2rehcfg.json
+    ${CMAKE_CURRENT_SOURCE_DIR}/sites_config.json
+    ${CMAKE_CURRENT_BINARY_DIR}/sties_config.json
     COPYONLY
 )
