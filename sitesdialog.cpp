@@ -46,12 +46,11 @@ void SitesDialog::CommandButton_clicked()
             break;
         }
     }
-    qDebug() << "SiteID" << siteId << "Command:" << buttonCmd;
-    if (buttonCmd.contains("%")) {
-        emit SendCommand(buttonCmd.replace("%", siteId, Qt::CaseInsensitive), ui->enable->isChecked());
-    } else {
-        emit SendCommand(buttonCmd, ui->enable->isChecked());
-    }
+    QString DTMFCommand=buttonCmd;
+    DTMFCommand.replace("%", siteId, Qt::CaseInsensitive);
+    qDebug().noquote().nospace() << "SiteID(" << siteId << ")::Command(" << buttonCmd << ")==>" << DTMFCommand;
+    emit SendCommand(DTMFCommand, ui->enable->isChecked());
+    ui->dtmfSeq->setText(DTMFCommand);
 }
 
 
@@ -60,7 +59,7 @@ void SitesDialog::CommandButton_clicked()
 void SitesDialog::on_sendDTMF_clicked()
 {
     auto dtmf_seq = ui->dtmfSeq->text();
-    qDebug() << "Sending DTMF Seq : " << dtmf_seq;
+    //qDebug() << "Sending DTMF Seq : " << dtmf_seq;
     emit SendCommand(dtmf_seq,ui->enable->isChecked());
 }
 

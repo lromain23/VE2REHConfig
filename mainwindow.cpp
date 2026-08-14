@@ -59,7 +59,7 @@ void MainWindow::sendDTMF(QString cmd, bool enable) {
         // Connect to post reply finished signal
         connect(postReply, &QNetworkReply::finished, this, &MainWindow::onPostFinished);
     }
-    qDebug() << "Sending Command to DTMF server : " << cmd << " Enable : " << enable;
+//    qDebug() << "Sending Command to DTMF server : " << cmd << " Enable : " << enable;
 }
 
 void MainWindow::onConfigReplyFinished() {
